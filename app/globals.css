@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 *{
-    @apply text-marrom font-truculenta font-semibold  leading-none m-0 p-0 box-border
+    @apply text-marrom font-truculenta font-semibold  leading-none m-0 p-0 box-border antialiased
 }
 
 body::-webkit-scrollbar {

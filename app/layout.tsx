@@ -13,14 +13,12 @@ export const metadata: Metadata = {
   description: "Peça seu lanche favorito sem sair de casa!",
 };
 
-export default function RootLayout( {
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}> ) {
+export default function RootLayout( { children, }: Readonly<{ children: React.ReactNode; }> ) {
   return (
-    <html lang="pt-BR">
-      <body className={truculenta.variable}>{children}</body>
+    <html lang="pt-BR" >
+      <body className={` ${truculenta.variable} `}>
+        {children}
+      </body>
     </html>
   );
 }

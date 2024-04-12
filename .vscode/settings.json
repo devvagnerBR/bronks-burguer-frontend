@@ -1,15 +1,15 @@
 {
     "git.enabled": false,
     "files.exclude": {
-        "node_modules": true,
+        "node_modules": false,
         ".vscode": false,
         ".gitignore": false,
-        "package-lock.json": true,
+        "package-lock.json": false,
         "package.json": false,
         "tsconfig.json": false,
-        "pnpm-lock.yaml": true,
-        "next-env.d.ts": true,
-        "next.config.mjs": true,
+        "pnpm-lock.yaml": false,
+        "next-env.d.ts": false,
+        "next.config.mjs": false,
         "README.md": true,
     }
 }

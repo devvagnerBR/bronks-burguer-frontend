@@ -3,8 +3,8 @@ import Link from "next/link";
 export default async function CadastroPage() {
 
     return (
-        <main className="flex flex-col bg-creme-300 w-full max-w-[460px] max-lg:max-w-none  pt-16 p-4 border">
-            <div>
+        <main className="flex flex-col bg-creme-300 w-full max-w-[460px]  max-lg:items-center max-lg:justify-center max-lg:max-w-none  pt-16 p-4 border">
+            <div className="max-lg:flex max-lg:items-center max-lg:flex-col">
                 <h1 className="text-[80px] font-black">Criar conta</h1>
                 <h1 className="text-[39px] font-black">Bem vindo!</h1>
             </div>

@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    @apply text-marrom font-truculenta font-semibold  leading-none m-0 p-0 box-border antialiased
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+
+    @apply bg-transparent
+  
+}
+
+body::-webkit-scrollbar-thumb {
+    @apply bg-vermelho
+
+}
+
+img{
+    @apply max-w-full block
+}
+
+
+
+body{
+       scrollbar-gutter: stable;
+    overflow: auto;
+}
+
+:root{
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust:100%;
+}

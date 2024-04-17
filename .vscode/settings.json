@@ -10,6 +10,6 @@
         "pnpm-lock.yaml": false,
         "next-env.d.ts": false,
         "next.config.mjs": false,
-        "README.md": true,
+        "README.md": false,
     }
 }

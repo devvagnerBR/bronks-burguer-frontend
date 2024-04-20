@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
 import "../globals.css";
-import { Truculenta } from 'next/font/google'
+import type { Metadata } from "next";
+import { Truculenta } from 'next/font/google';
 import { UserContextProvider } from "../../context/user-context";
 import { User, getProfile } from "@/src/actions/get-profile";
-import { ReactQueryClientProvider } from "@/src/providers/react-query-provider";
-
+import { Providers } from "@/src/providers/react-query-provider";
 
 const truculenta = Truculenta( {
   weight: ['300', '500', '600', '900'],
@@ -23,7 +22,8 @@ export default async function RootLayout( { children, }: Readonly<{ children: Re
 
   return (
 
-    <ReactQueryClientProvider>
+    <Providers>
+
       <html lang="pt-BR" >
         <body className={` ${truculenta.variable} bg-creme-300`}>
           <UserContextProvider user={user}>
@@ -31,7 +31,7 @@ export default async function RootLayout( { children, }: Readonly<{ children: Re
           </UserContextProvider>
         </body>
       </html >
-    </ReactQueryClientProvider>
+    </Providers>
 
   );
 }

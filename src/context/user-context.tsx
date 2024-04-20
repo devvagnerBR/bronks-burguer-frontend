@@ -34,9 +34,15 @@ export interface User {
 
 const UserContext = React.createContext<UserContextInterface | null>( null )
 
-export function UserContextProvider( { children, user}: { children: React.ReactNode, user: User | null } ) {
+export function UserContextProvider( { children, user }: { children: React.ReactNode, user: User | null } ) {
 
     const [userState, setUserState] = React.useState<User | null>( user )
+
+
+    React.useEffect( () => {
+        setUserState( user );
+    }, [user] );
+
     return (
         <UserContext.Provider value={{ user: userState, setUser: setUserState }}>
             {children}

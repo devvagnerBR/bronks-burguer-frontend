@@ -1,5 +1,4 @@
 'use client'
-
 import { Product, getProducts } from "@/src/actions/get-products";
 import CategoriesMenu from "./categories-menu";
 import { useSearchParams } from "next/navigation";
@@ -7,25 +6,25 @@ import { MenuItem } from "./menu-item";
 import { getPageWidth } from "@/src/utils/get-page-width";
 
 //phosphor icons
-import { ShoppingCart } from "@phosphor-icons/react/ShoppingCart";
+import { ShoppingCart } from "@phosphor-icons/react/dist/ssr/ShoppingCart";
 
 // swiper
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-
 
 // tailwind merge
 import { twMerge } from "tailwind-merge";
+
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 
+interface Props {
+    cartIsEmpty: boolean;
+}
 
+export default function MenuItems( { cartIsEmpty }: Props ) {
 
-export default function MenuItems( { cartIsEmpty }: { cartIsEmpty: boolean } ) {
-
-    // const [products, setProducts] = useState<Product[]>( [] );
     const query = useSearchParams();
     const search = query.get( 'categoria' ) || 'lanches';
 
@@ -33,21 +32,24 @@ export default function MenuItems( { cartIsEmpty }: { cartIsEmpty: boolean } ) {
     const isMobile = size < 969
 
     const { data } = useQuery( {
-        queryKey: ['@req.products', search],
+        queryKey: ['products'],
         queryFn: async () => await getProducts(),
+        refetchOnWindowFocus: false,
+        refetchOnMount: false,
+        staleTime: 60 * 60 // 1 hour 
     } )
 
     const products = Array.isArray( data ) ? data.filter( ( product: Product ) => product.category === search ) : [];
 
     return (
-        <div className="mt-8  flex  flex-col items-center relative  justify-center overflow-hidden">
 
+
+        <div className="mt-8  flex  flex-col items-center relative  justify-center overflow-hidden">
             <h1 id="menu" className="text-[64px] font-black">CARDÁPIO</h1>
             <CategoriesMenu />
 
             {
                 isMobile ?
-
                     <Swiper
                         spaceBetween={10}
                         slidesPerView={2}
@@ -57,9 +59,11 @@ export default function MenuItems( { cartIsEmpty }: { cartIsEmpty: boolean } ) {
 
                     </Swiper>
                     :
-                    <section className="flex  max-w-[1280px] flex-wrap items-center justify-center w-full mt-16 gap-4 ">
+                    <div className="flex  max-w-[1280px] flex-wrap items-center justify-center w-full mt-16 gap-4 ">
                         {products && products.map( ( product: Product ) => <MenuItem key={product.id} product={product} /> )}
-                    </section>
+                    </div>
+
+
             }
 
 
@@ -69,10 +73,6 @@ export default function MenuItems( { cartIsEmpty }: { cartIsEmpty: boolean } ) {
                     <p className="font-black">CARRINHO</p>
                 </Link>
             }
-
-
-
-
 
         </div>
     );

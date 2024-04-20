@@ -3,15 +3,12 @@
 import { Button } from "@/src/components/button";
 import Title from "@/src/components/title";
 import { useCheckout } from "@/src/hooks/use-checkout";
-import { ArrowRight } from "@phosphor-icons/react/ArrowRight";
-import { CaretLeft } from "@phosphor-icons/react/CaretLeft";
+import { CaretLeft } from "@phosphor-icons/react/dist/ssr/CaretLeft";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr/ArrowRight";
+
+
 import { useRouter } from "next/navigation";
 import React from "react";
-
-export interface CheckoutPageProps {
-
-
-}
 
 export default function CheckoutPage() {
 
@@ -133,13 +130,13 @@ export default function CheckoutPage() {
                     </select>
                 </label>
 
-                <Button.Wrapper
+                <Button.ButtonWrapper
                     type="submit"
                     onClick={handleSubmit( handleCreateOrder )}
                     className="mb-[5px] max-xl:mb-0 max-md:w-full bg-verde">
                     <Button.Content text="ENVIAR PEDIDO" />
                     <Button.Icon icon={ArrowRight} />
-                </Button.Wrapper>
+                </Button.ButtonWrapper>
             </section>
 
         </form>

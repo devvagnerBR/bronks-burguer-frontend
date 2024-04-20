@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 
 
 
-interface ButtonContentProps extends React.ComponentProps<"button"> {
+interface ButtonContentProps extends React.ComponentProps<"span"> {
     text: string,
     className?: string
 }
@@ -11,6 +11,6 @@ interface ButtonContentProps extends React.ComponentProps<"button"> {
 
 export function ButtonContent( { text, className }: ButtonContentProps ) {
     return (
-        <button className={twMerge( "", className )}>{text}</button>
+        <span className={twMerge( "", className )}>{text}</span>
     );
 }

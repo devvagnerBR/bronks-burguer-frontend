@@ -31,10 +31,10 @@ export default async function CartItems( { cart }: CartItemsProps ) {
             </div>
             <div className="w-full flex justify-end items-center  max-xl:px-4">
 
-                <Button.Wrapper className=" bg-verde" path="/checkout" >
+                <Button.LinkWrapper className=" bg-verde" href="/checkout" >
                     <Button.Content text="ENDEREÇO DE ENTREGA" />
                     <Button.Icon icon={ArrowRight} />
-                </Button.Wrapper>
+                </Button.LinkWrapper>
 
             </div>
         </div>

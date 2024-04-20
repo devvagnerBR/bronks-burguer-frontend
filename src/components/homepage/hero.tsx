@@ -19,10 +19,10 @@ export default async function HomepageHero() {
                         suculento
                     </span> hambúrguer de carne que você já comeu.
                 </h2>
-                <Button.Wrapper path="/#menu">
+                <Button.LinkWrapper href="/#menu">
                     <Button.Content text="FAZER PEDIDO" />
                     <Button.Icon icon={ArrowRight} />
-                </Button.Wrapper>
+                </Button.LinkWrapper>
 
                 <p className="text-[22px] max-sm:text-[18px] font-light mt-4">Entregas em todo Rio de Janeiro - RJ</p>
             </div>

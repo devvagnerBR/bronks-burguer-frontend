@@ -1,6 +1,5 @@
 'use server'
 
-import { cookies } from "next/headers";
 import { BASE_URL } from "../requests/base-url";
 import { getCookie } from "./cookies/get-cookie";
 
@@ -11,8 +10,8 @@ export interface Product {
     price: number;
     category: string;
     image: string;
-    created_at: string; 
-    updated_at: string; 
+    created_at: string;
+    updated_at: string;
 }
 
 

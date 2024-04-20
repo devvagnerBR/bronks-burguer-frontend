@@ -7,9 +7,7 @@ export default async function Header() {
     const user = await getProfile() as User
 
     return (
-        <div className="flex w-full max-xl:px-2 mt-[60px] max-sm:flex-col max-sm:items-center max-sm:justify-center    justify-between  max-w-[1280px] m-auto ">
-
-
+        <div className="flex w-full max-xl:px-2 max-xl:pl-4 mt-[60px] max-sm:flex-col max-sm:items-center max-sm:justify-center    justify-between  max-w-[1280px] m-auto ">
             <Link href="/">
                 <Image
                     src="/logos/logo-header.svg"
@@ -21,9 +19,9 @@ export default async function Header() {
                     quality={100} />
             </Link>
             <div className="flex gap-9 max-sm:mt-8  items-center">
-                <a className="text-[22px] font-black cursor-pointer">CARDÁPIO</a>
+                <Link href="/#menu" className="text-[22px] font-black cursor-pointer">CARDÁPIO</Link>
                 {user.username ?
-                    <Link href="/perfil" className="text-[22px] font-black text-vermelho cursor-pointer uppercase">@{user.username}</Link> :
+                    <Link href="/perfil/pedidos?p=1" className="text-[22px] font-black text-vermelho cursor-pointer uppercase">@{user.username}</Link> :
                     <Link href="/entrar" className="text-[22px] font-black text-vermelho cursor-pointer">ENTRAR</Link>}
             </div>
         </div>

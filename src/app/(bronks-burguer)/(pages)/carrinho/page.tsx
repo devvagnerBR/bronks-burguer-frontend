@@ -21,10 +21,10 @@ export default async function CarrinhoPage() {
                 <div className="flex w-full justify-between max-md:items-center items-end max-md:flex-col">
 
                     <p className="text-[24px] max-md:text-[18px] font-light">Tempo médio para a entrega: <span className="font-semibold">60min</span></p>
-                    <Button.Wrapper className="" path="/#menu" >
+                    <Button.LinkWrapper className="" href="/#menu" >
                         <Button.Icon icon={ArrowLeft} />
                         <Button.Content text="CONTINUAR COMPRANDO" />
-                    </Button.Wrapper>
+                    </Button.LinkWrapper>
                 </div>
 
             </header>

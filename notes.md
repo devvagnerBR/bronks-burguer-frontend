@@ -6,3 +6,4 @@
 - [X] - Não deve ser possível acessar as rotas ['/entrar', '/cadastro'] caso já esteja logado;
 
 - [só deve ser possível acessar a rota carrinho caso tenha itens no carrinho]
+- [ ] - paginação do histórico de compras

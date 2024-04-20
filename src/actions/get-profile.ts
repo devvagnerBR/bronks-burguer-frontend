@@ -1,6 +1,5 @@
 'use server'
 
-import { cookies } from "next/headers";
 import { BASE_URL } from "../requests/base-url";
 import { getCookie } from "./cookies/get-cookie";
 
@@ -32,7 +31,8 @@ export async function getProfile(): Promise<User | { message: string }> {
         method: 'GET',
         headers: { Authorization: `Bearer ${token}` },
         next: {
-            tags: ['@req.profile']
+            tags: ['profile'],
+            revalidate: 60,
         }
     } )
 

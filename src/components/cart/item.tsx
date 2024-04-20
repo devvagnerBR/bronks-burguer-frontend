@@ -4,8 +4,8 @@ import { CartProduct } from "@/src/actions/cart/get-cart";
 import { cartMutations } from "@/src/requests/react-query/mutations/cart";
 
 //icons
-import { MinusCircle } from '@phosphor-icons/react/MinusCircle'
-import { PlusCircle } from '@phosphor-icons/react/PlusCircle'
+import { MinusCircle } from '@phosphor-icons/react/dist/ssr/MinusCircle'
+import { PlusCircle } from '@phosphor-icons/react/dist/ssr/PlusCircle'
 
 export interface CartItemProps {
     product: CartProduct

@@ -3,13 +3,14 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useUserContext } from "../context/user-context";
+import { useUserContext } from '../context/user-context';
 import React from "react";
 import { getCEP } from "../actions/checkout/get-cep";
 import { postOrder } from "../actions/checkout/post-order";
 import { revalidateTagAction } from "../utils/revalidate";
 import { delay } from "../utils/delay";
 import { useRouter } from "next/navigation";
+
 
 
 const checkoutSchema = z.object( {
@@ -29,6 +30,7 @@ type checkoutData = z.infer<typeof checkoutSchema>
 export function useCheckout() {
 
     const { user } = useUserContext();
+
     const router = useRouter();
 
     const { register, handleSubmit, watch, setValue, formState: { errors, isSubmitting } } = useForm<checkoutData>( {
@@ -50,7 +52,7 @@ export function useCheckout() {
         await delay( 1500 );
         await postOrder( data )
         await revalidateTagAction( '@req.cart' )
-        router.push( '/perfil/pedidos' )
+        router.push( '/perfil/pedidos?p=1' )
 
     }
 

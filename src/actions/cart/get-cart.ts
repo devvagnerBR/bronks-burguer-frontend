@@ -25,7 +25,7 @@ export async function getCart() {
         method: 'GET',
         headers: { Authorization: `Bearer ${token}` },
         next: {
-            tags: ['@req.cart'],
+            tags: ['cart'],
         }
     } )
 

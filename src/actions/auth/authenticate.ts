@@ -1,6 +1,8 @@
 'use server'
+import { cookies } from "next/headers";
 import { BASE_URL } from "../../requests/base-url";
 import { setCookie } from "../cookies/set-cookie";
+
 
 export interface loginUserInterface {
     email: string;
@@ -9,6 +11,9 @@ export interface loginUserInterface {
 
 
 export async function authenticate( { email, password }: loginUserInterface ) {
+
+
+    cookies().delete( 'token' );
 
     const response = await fetch( `${BASE_URL}/user/authenticate`, {
         method: 'POST',

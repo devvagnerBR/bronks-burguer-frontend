@@ -14,7 +14,7 @@ export default async function PedidosPage( { searchParams }: Props ) {
 
     return (
 
-        <Suspense fallback="procurando pedidos...">
+       
             <div className="animeLeft">
                 <div className={`max-w-[1280px] ${!items ? "min-h-[calc(100vh-300px)]" : "min-h-[calc(100vh-600px)]"}  max-xl:px-4 m-auto `}>
                     <OrderItems orders={items} />
@@ -22,7 +22,7 @@ export default async function PedidosPage( { searchParams }: Props ) {
 
                 </div>
             </div>
-        </Suspense>
+
     );
 }
 

@@ -22,7 +22,7 @@ export async function getOrders( p: number = 1 ) {
 
     const items = data?.orders?.map( orderMappers.toFrontend ) as any[]
     const count = data.totalItems;
-
+    console.log( data )
     return { items, ordersCount: count }
 
 

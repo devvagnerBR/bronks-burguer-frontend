@@ -15,7 +15,7 @@ export function LinkWrapper( { children, href, className, onClick }: LinkWrapper
         <Link
             href={href}
             onClick={onClick}
-            className={twMerge( " transition-all flex items-center justify-center gap-2 w-full max-w-[326px] max-md:max-w-none  shadow-marrom  mt-8 max-md:mt-2 font-black text-marrom hover:shadow-hover uppercase text-[24px] bg-branco h-[72px] rounded-[20px] border-2 border-marrom", className )}>
+            className={twMerge( " transition-all flex items-center justify-center gap-2 w-full max-w-[326px] max-md:max-w-[320px]  shadow-marrom  mt-8 max-md:mt-2 font-black text-marrom hover:shadow-hover uppercase text-[24px] bg-branco h-[72px] rounded-[20px] border-2 border-marrom", className )}>
             {children}
         </Link>
     )

@@ -10,13 +10,15 @@ export async function middleware( req: NextRequest ) {
 
     try {
         cart = await getCart() as Cart;
+        // console.log( 'cart:', cart )
     } catch ( error ) {
         console.error( 'Failed to fetch cart:', error );
         // Handle error as appropriate for your application
         return;
     }
 
-    const cartIsEmpty = cart?.items?.length === 0 ? true : false;
+    const cartIsEmpty = cart && cart?.items?.length > 0 ? false : true
+    
 
 
     const authenticated = token ? await verifyToken( token ) : false;

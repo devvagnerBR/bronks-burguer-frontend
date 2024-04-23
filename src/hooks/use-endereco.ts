@@ -49,7 +49,7 @@ export function useEndereco() {
         complement?: string
     } ) {
 
-        await delay( 1000 );
+        // await delay( 1000 );
 
         const updateAddressData: {
             cep?: string,
@@ -79,7 +79,7 @@ export function useEndereco() {
 
 
             const res = await updateAddress( updateAddressData );
-            console.log( res )
+      
             await revalidateTagAction( 'profile' );
 
 
@@ -96,7 +96,7 @@ export function useEndereco() {
                 }
             );
 
-            console.log( res );
+        
             await revalidateTagAction( 'profile' );
 
         }

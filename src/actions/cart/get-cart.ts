@@ -30,8 +30,15 @@ export async function getCart() {
                 tags: ['cart'],
             }
         } )
-        const data = await response.json() as Cart;
-        return data;
+        if ( !response.ok ) {
+            return
+        } else {
+            const data = await response.json() as Cart | boolean;
+            return data;
+
+        }
+
+
     }
 
 }

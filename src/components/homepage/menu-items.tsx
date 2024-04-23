@@ -21,7 +21,7 @@ import { useQuery } from "@tanstack/react-query";
 
 
 interface Props {
-    cartIsEmpty: boolean;
+    cartIsEmpty: boolean
 }
 
 export default function MenuItems( { cartIsEmpty }: Props ) {
@@ -68,11 +68,11 @@ export default function MenuItems( { cartIsEmpty }: Props ) {
             }
 
 
-            {!cartIsEmpty &&
+            {!cartIsEmpty ?
                 <Link href="/carrinho" className=" flex items-center gap-4 justify-center fixed animate-bounce transition-all duration-[4000] min-w-[145px] w-[194px] rounded-tr-[20px] rounded-br-[20px] h-[70px] z-40 left-0 bottom-2 font-black bg-amarelo border-[2.8px]  text-[32px] border-marrom text-marrom">
                     <ShoppingCart weight="fill" />
                     <p className="font-black">CARRINHO</p>
-                </Link>
+                </Link> : null
             }
 
         </div>

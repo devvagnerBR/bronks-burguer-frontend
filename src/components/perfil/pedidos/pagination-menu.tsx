@@ -12,6 +12,7 @@ export default function PaginationMenu( { count }: { count: number } ) {
     const take = 3;
     const totalPages = Math.ceil( count / take );
 
+    if ( totalPages === 1 ) return null;
     return (
         <div className="flex gap-4 w-full max-w-[1250px]">
 

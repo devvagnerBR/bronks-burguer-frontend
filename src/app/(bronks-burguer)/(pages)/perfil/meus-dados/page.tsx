@@ -59,12 +59,12 @@ export default function MeusDadosPage() {
                         />
                     </label>
                 </div>
-                <div className="w-full flex  justify-end">
+                <div className="w-full flex  justify-end max-md:px-4">
                     <Button.ButtonWrapper
                         onClick={handleSubmit( handleUpdateProfile )}
                         disabled={isSubmitting}
                         type="submit"
-                        className="mt-7 group bg-verde disabled:bg-verde/60 disabled:border-marrom/40 disabled:text-marrom/40">
+                        className="mt-7 group bg-verde disabled:bg-verde/60 disabled:border-marrom/40 disabled:text-marrom/40 w-full">
                         {isSubmitting ? <Button.Content className="text-marrom/50" text="Salvando alterações..." /> : <Button.Content className="" text="Salvar" />}
                     </Button.ButtonWrapper>
                 </div>

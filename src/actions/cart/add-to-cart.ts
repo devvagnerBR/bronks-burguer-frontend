@@ -6,7 +6,9 @@ import { revalidateTagAction } from "@/src/utils/revalidate";
 
 export async function addToCart( productId: string ) {
 
-    const token = await getCookie( 'token' );
+    const token = await getCookie( 'token' ) as string
+    // console.log( token )
+    if ( !token ) return false;
 
     const response = await fetch( `${BASE_URL}/user/cart/${productId}`, {
         method: 'POST',
@@ -24,4 +26,3 @@ export async function addToCart( productId: string ) {
     return data;
 
 }
-

@@ -37,7 +37,7 @@ export function useMeusDados() {
 
     async function handleUpdateProfile( data: { name?: string, phone?: string } ) {
 
-        await delay( 1000 );
+        // await delay( 1000 );
 
         const updatedProfileData: { name?: string, phone?: string, username?: string } = {}
 

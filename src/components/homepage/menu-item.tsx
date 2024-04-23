@@ -7,6 +7,7 @@ import Image from "next/image";
 import { twMerge } from 'tailwind-merge';
 
 import { addItemToCartNotificationHome } from "@/src/libs/react-hot-toasts";
+import { useRouter } from "next/navigation";
 
 export type MenuItemsProps = React.ComponentProps<'div'> & {
     product: Product;
@@ -15,6 +16,9 @@ export type MenuItemsProps = React.ComponentProps<'div'> & {
 
 
 export function MenuItem( { product, className }: MenuItemsProps ) {
+
+
+    const router = useRouter();
 
     let productImage = ''
     switch ( product.category ) {
@@ -34,8 +38,11 @@ export function MenuItem( { product, className }: MenuItemsProps ) {
 
 
     async function handleAddToCart( product: Product ) {
-        await addToCart( product.id )
-        addItemToCartNotificationHome( product.name )
+
+        const res = await addToCart( product.id )
+
+        if ( !res ) router.push( '/entrar' )
+        else addItemToCartNotificationHome( product.name )
     }
 
     return (

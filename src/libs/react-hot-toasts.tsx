@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { delay } from "../utils/delay";
 
 export const addItemToCartNotificationHome = ( item: string ) => toast.promise(
-    delay( 1550 ),
+    delay( 500 ),
     {
         loading: `adicionando ${item}...`,
         success: `${item} adicionado do carrinho!`,
@@ -20,7 +20,7 @@ export const addItemToCartNotificationHome = ( item: string ) => toast.promise(
 );
 
 export const removeItemFromCartNotification = () => toast.promise(
-    delay( 850 ),
+    delay( 500 ),
     {
         loading: 'Removendo item...',
         success: 'Item removido do carrinho!',
@@ -30,11 +30,10 @@ export const removeItemFromCartNotification = () => toast.promise(
 
 
 export const addItemToCartNotification = () => toast.promise(
-    delay( 850 ),
+    delay( 500 ),
     {
         loading: 'adicionando item...',
         success: 'Item adicionado do carrinho!',
         error: 'Ocorreu um erro ao adicionar item!',
     }
 );
-

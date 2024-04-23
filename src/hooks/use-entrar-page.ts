@@ -28,7 +28,7 @@ export function useEntrar() {
 
         const response = await handleAuth( data ) as { authorized: boolean, message: string };
 
-        await delay( 1500 );
+        // await delay( 1500 );
 
         if ( !response.authorized ) setError( response.message );
         else router.push( '/' )

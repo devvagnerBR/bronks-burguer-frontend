@@ -7,8 +7,8 @@ export default async function Header() {
     const user = await getProfile() as User
 
     return (
-        <div className="flex w-full max-xl:px-2 max-xl:pl-4 mt-[60px] max-sm:flex-col max-sm:items-center max-sm:justify-center    justify-between  max-w-[1280px] m-auto ">
-            <Link href="/">
+        <div className="flex w-full max-xl:px-2 max-xl:pl-4 mt-[60px] max-sm:flex-col  max-md:items-center max-md:justify-center    justify-between  max-w-[1280px] m-auto ">
+            <Link href="/" className="max-md:hidden">
                 <Image
                     src="/logos/logo-header.svg"
                     alt="logo bronks burguer"

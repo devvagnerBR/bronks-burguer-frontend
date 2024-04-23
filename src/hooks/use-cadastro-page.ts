@@ -38,7 +38,7 @@ export  function useCadastro() {
 
         setError( '' )
 
-        await delay( 1500 );
+        // await delay( 1500 );
         const response = await handleRegister( data ) as { authorized: boolean, message: string };
 
 

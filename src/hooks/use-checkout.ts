@@ -49,7 +49,7 @@ export function useCheckout() {
 
     async function handleCreateOrder( data: any ) {
 
-        await delay( 1500 );
+        // await delay( 1500 );
         await postOrder( data )
         await revalidateTagAction( '@req.cart' )
         router.push( '/perfil/pedidos?p=1' )

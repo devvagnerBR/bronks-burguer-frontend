@@ -8,6 +8,24 @@ export default function OrderItem( { order }: { order: MappedOrdersResponse } ) 
 
     const [showMore, setShowMore] = React.useState( false );
 
+    function formatPhoneNumber( phoneNumber: string ) {
+        const cleaned = ( '' + phoneNumber ).replace( /\D/g, '' ); // Remove todos os caracteres não numéricos
+        const match = cleaned.match( /^(\d{2})(\d{5})(\d{4})$/ ); // Divide o número em grupos (DD)(XXXXX)(XXXX)
+        if ( match ) {
+            return `(${match[1]}) ${match[2]}-${match[3]}`; // Formata o número como (DD) XXXXX-XXXX
+        }
+        return phoneNumber; // Retorna o número original se não puder ser formatado
+    }
+
+    async function handleSendOrderByWhatsApp( order: MappedOrdersResponse ) {
+
+        const message = `Olá, meu nome é *${order.user.name}* e gostaria de fazer um pedido com os seguintes itens: \n\n${order.itens.map( ( item ) => `✅ ${item.quantity} ${item.name}` ).join( '\n' )}\n\n🏠 Endereço de entrega:\n${order.user.address.street}, ${order.user.address.neighborhood}, ${order.user.address.city} - ${order.user.address.state}, ${order.user.address.cep}\nComplemento: ${order.user.address.complement}\n\n\☎️ Telefone de contato: ${formatPhoneNumber( order.user.phone )} \n\n💰 Forma de pagamento: ${order.paymentMethod}\n\nTotal: ${order.total}\n\nNº do pedido: #00${order.orderNumber}\nPedido feito em: ${order.createdAt}\n`;
+
+        const url = `https://api.whatsapp.com/send?phone=5522997759060&text=${encodeURIComponent( message )}`;
+
+        window.open( url, "_blank" );
+    }
+
 
     return (
         <div className="flex max-sm:flex-col ">
@@ -47,7 +65,8 @@ export default function OrderItem( { order }: { order: MappedOrdersResponse } ) 
                             </div>
                         }
                         )}
-                        <p onClick={() => setShowMore( state => !state )} className="uppercase text-vermelho font-black cursor-pointer">{showMore ? "ver menos" : "ver mais"}</p>
+                        <p onClick={() => setShowMore( state => !state )} className="uppercase text-vermelho font-black cursor-pointer">{showMore ? "ver menos" : "ver itens"}</p>
+                        <p onClick={() => handleSendOrderByWhatsApp( order )} className="text-emerald-600 uppercase border p-2 rounded-md cursor-pointer border-emerald-500">ENVIAR PEDIDO VIA whatsApp</p>
                     </div>
 
                 </div>

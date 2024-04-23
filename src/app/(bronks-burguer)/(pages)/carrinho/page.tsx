@@ -12,25 +12,26 @@ export default async function CarrinhoPage() {
 
     return (
 
-        <div className="max-w-[1280px] m-auto w-full  mt-8">
+       
+            <div className="max-w-[1280px] m-auto w-full animeLeft mt-8">
 
-            <header className="border-b-[0.5px] max-md:flex max-md:flex-col max-md:items-center border-dashed border-marrom/40 pb-2 max-xl:px-4 ">
+                <header className="border-b-[0.5px] max-md:flex max-md:flex-col max-md:items-center border-dashed border-marrom/40 pb-2 max-xl:px-4 ">
 
-                <h1 className="text-[64px] font-black uppercase">Carrinho</h1>
+                    <h1 className="text-[64px] font-black uppercase">Carrinho</h1>
 
-                <div className="flex w-full justify-between max-md:items-center items-end max-md:flex-col">
+                    <div className="flex w-full justify-between max-md:items-center items-end max-md:flex-col">
 
-                    <p className="text-[24px] max-md:text-[18px] font-light">Tempo médio para a entrega: <span className="font-semibold">60min</span></p>
-                    <Button.LinkWrapper className="" href="/#menu" >
-                        <Button.Icon icon={ArrowLeft} />
-                        <Button.Content text="CONTINUAR COMPRANDO" />
-                    </Button.LinkWrapper>
-                </div>
+                        <p className="text-[24px] max-md:text-[18px] font-light">Tempo médio para a entrega: <span className="font-semibold">60min</span></p>
+                        <Button.LinkWrapper className="" href="/#menu" >
+                            <Button.Icon icon={ArrowLeft} />
+                            <Button.Content text="CONTINUAR COMPRANDO" />
+                        </Button.LinkWrapper>
+                    </div>
 
-            </header>
+                </header>
 
-            <CartItems cart={cart} />
-        </div>
+                <CartItems cart={cart} />
+            </div>
 
     );
 }

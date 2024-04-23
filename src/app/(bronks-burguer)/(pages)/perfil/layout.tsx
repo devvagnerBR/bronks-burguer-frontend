@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function profileLayout( { children, }: { children: React.ReactNode; } ) {
 
     return (
-        <div className="">
+        <div className="animeLeft">
             <MenuProfile />
             {children}
         </div>

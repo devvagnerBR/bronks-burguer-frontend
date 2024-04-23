@@ -21,15 +21,17 @@ export async function getCart() {
 
     const token = await getCookie( 'token' ) as string;
 
-    const response = await fetch( `${BASE_URL}/user/cart`, {
-        method: 'GET',
-        headers: { Authorization: `Bearer ${token}` },
-        next: {
-            tags: ['cart'],
-        }
-    } )
+    if ( token ) {
 
-    const data = await response.json() as Cart;
-    return data;
+        const response = await fetch( `${BASE_URL}/user/cart`, {
+            method: 'GET',
+            headers: { Authorization: `Bearer ${token}` },
+            next: {
+                tags: ['cart'],
+            }
+        } )
+        const data = await response.json() as Cart;
+        return data;
+    }
 
 }

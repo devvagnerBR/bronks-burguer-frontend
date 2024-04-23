@@ -10,8 +10,8 @@ export default async function OrderItems( { orders }: { orders: MappedOrdersResp
 
         <div>
             {orders?.map( ( order ) => {
-                return <section className="flex flex-col gap-8 pb-8">
-                    <OrderItem key={order.id} order={order} />
+                return <section key={order.id} className="flex flex-col gap-8 pb-8">
+                    <OrderItem order={order} />
                     <p className="w-[800px] max-xl:w-full border-b border-dashed border-marrom/40" />
                 </section>
             } )}

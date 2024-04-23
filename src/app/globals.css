@@ -39,3 +39,16 @@ body{
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust:100%;
 }
+
+.animeLeft {
+	opacity: 0;
+	transform: translateX(-20px);
+	animation: animeLeft 0.9s forwards;
+  }
+  
+  @keyframes animeLeft {
+	to {
+	  opacity: 1;
+	  transform: initial;
+	}
+  }

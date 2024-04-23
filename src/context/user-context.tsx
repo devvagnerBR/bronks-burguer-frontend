@@ -2,15 +2,10 @@
 
 import React from "react"
 
-
-
-
 interface UserContextInterface {
 
     user: User | null;
     setUser: React.Dispatch<React.SetStateAction<User | null>>;
-
-
 
 }
 

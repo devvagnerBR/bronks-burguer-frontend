@@ -19,6 +19,7 @@ import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 
 
+
 interface Props {
     cartIsEmpty: boolean;
 }
@@ -54,12 +55,12 @@ export default function MenuItems( { cartIsEmpty }: Props ) {
                         spaceBetween={10}
                         slidesPerView={2}
                         width={630}
-                        className={twMerge( " ml-4 mt-16" )}>
+                        className={twMerge( " ml-4 mt-16 " )}>
                         {products && products.map( ( product: Product ) => <SwiperSlide key={product.id}><MenuItem className="ml-4" product={product} /> </SwiperSlide> )}
 
                     </Swiper>
                     :
-                    <div className="flex  max-w-[1280px] flex-wrap items-center justify-center w-full mt-16 gap-4 ">
+                    <div className="flex   max-w-[1280px] flex-wrap items-center justify-center w-full mt-16 gap-4 ">
                         {products && products.map( ( product: Product ) => <MenuItem key={product.id} product={product} /> )}
                     </div>
 

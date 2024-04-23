@@ -1,6 +1,6 @@
-import { authenticate, loginUserInterface } from "@/src/actions/auth/authenticate";
 import { addToCart } from "@/src/actions/cart/add-to-cart";
 import { removeToCart } from "@/src/actions/cart/remove-to-cart";
+import { addItemToCartNotification, removeItemFromCartNotification } from "@/src/libs/react-hot-toasts";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export function cartMutations() {
@@ -12,7 +12,7 @@ export function cartMutations() {
 
         mutationFn: ( id: string ) => addToCart( id ),
         onSuccess( data ) {
-
+            addItemToCartNotification()
             queryClient.invalidateQueries( { queryKey: ['@req.cart'] } );
             console.log( data )
 
@@ -25,9 +25,9 @@ export function cartMutations() {
     const { mutateAsync: handleRemoveToCart } = useMutation( {
         mutationFn: ( id: string ) => removeToCart( id ),
         onSuccess( data ) {
+            removeItemFromCartNotification()
             queryClient.invalidateQueries( { queryKey: ['@req.cart'] } );
             console.log( data )
-
         },
         onError: () => console.log( 'error' ),
 

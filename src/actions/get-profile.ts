@@ -23,6 +23,8 @@ export interface User {
 
 
 
+
+
 export async function getProfile(): Promise<User | { message: string }> {
 
     const token = await getCookie( 'token' );

@@ -6,20 +6,19 @@ import { useCheckout } from "@/src/hooks/use-checkout";
 import { CaretLeft } from "@phosphor-icons/react/dist/ssr/CaretLeft";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr/ArrowRight";
 
-
 import { useRouter } from "next/navigation";
 import React from "react";
 
 export default function CheckoutPage() {
 
     const router = useRouter();
-    const { register, handleSubmit, handleCreateOrder } = useCheckout();
+    const { register, handleSubmit, handleCreateOrder, isSubmitting } = useCheckout();
 
     return (
-        <form onSubmit={handleSubmit( handleCreateOrder )} className="max-w-[1280px] m-auto w-full min-h-screen mt-8">
+        <form onSubmit={handleSubmit( handleCreateOrder )} className="max-w-[1280px] animeLeft m-auto w-full min-h-screen mt-8">
             <div className="flex items-center gap-4">
                 <CaretLeft onClick={() => router.back()} weight="bold" size={48} className="cursor-pointer transition-all hover:scale-110" />
-                <Title text="SEUS DADOS" />
+                <Title className="mt-0" text="SEUS DADOS" />
             </div>
 
             <section className="mt-4 gap-4 flex max-md:flex-col w-full items-center justify-center max-xl:px-4">
@@ -132,13 +131,29 @@ export default function CheckoutPage() {
 
                 <Button.ButtonWrapper
                     type="submit"
+                    disabled={isSubmitting}
                     onClick={handleSubmit( handleCreateOrder )}
-                    className="mb-[5px] max-xl:mb-0 max-md:w-full bg-verde">
-                    <Button.Content text="ENVIAR PEDIDO" />
-                    <Button.Icon icon={ArrowRight} />
+                    className="mb-[5px] max-xl:mb-0 max-md:w-full bg-verde disabled:bg-verde/60">
+                    {isSubmitting ? <Button.Content className="text-marrom/50" text="ENVIANDO..." /> : <Button.Content text="ENVIAR PEDIDO" />}
+                    {isSubmitting ? null : <Button.Icon icon={ArrowRight} />}
                 </Button.ButtonWrapper>
             </section>
 
         </form>
     );
 }
+
+/*
+
+            <Button.ButtonWrapper
+                    onClick={handleSubmit( handleUpdateProfile )}
+                    disabled={isSubmitting}
+                    type="submit"
+                    className="mt-7 group bg-verde disabled:bg-verde/60 disabled:border-marrom/40 disabled:text-marrom/40">
+                    {isSubmitting ? <Button.Content className="text-marrom/50" text="Salvando alterações..." /> : <Button.Content className="" text="Salvar" />}
+                </Button.ButtonWrapper>
+
+
+
+
+*/

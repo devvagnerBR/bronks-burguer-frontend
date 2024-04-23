@@ -4,6 +4,7 @@ import { Truculenta } from 'next/font/google';
 import { UserContextProvider } from "../../context/user-context";
 import { User, getProfile } from "@/src/actions/get-profile";
 import { Providers } from "@/src/providers/react-query-provider";
+import { Toaster } from "react-hot-toast";
 
 const truculenta = Truculenta( {
   weight: ['300', '500', '600', '900'],

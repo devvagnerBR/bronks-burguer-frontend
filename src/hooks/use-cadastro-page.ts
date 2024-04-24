@@ -5,6 +5,7 @@ import { z } from "zod";
 
 import { useRouter } from "next/navigation";
 import { registerNewUser } from "../actions/auth/register-new-user";
+import { revalidateTagAction } from "../utils/revalidate";
 
 const registerNewUserSchema = z.object( {
     phone: z.string().min( 11, 'telefone precisa ter no mínimo 11 caracteres' ),
@@ -46,9 +47,13 @@ export function useCadastro() {
                 password: data.password
             }
         ) as { authorized: boolean, message: string };
-        console.log( response )
+
         if ( !response.authorized ) setError( response.message );
-        else router.push( '/' )
+        else {
+            await revalidateTagAction( 'profile' );
+            router.push( '/' )
+        }
+
 
     }
 

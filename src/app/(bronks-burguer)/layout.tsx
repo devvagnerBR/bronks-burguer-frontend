@@ -19,7 +19,6 @@ export const metadata: Metadata = {
 export default async function RootLayout( { children, }: Readonly<{ children: React.ReactNode; }> ) {
 
   const user = await getProfile() as User;
-  console.log( user.username + '32424' )
 
   return (
 

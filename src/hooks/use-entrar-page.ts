@@ -31,6 +31,7 @@ export function useEntrar() {
 
         if ( !res.authorized ) setError( res.message );
         else {
+            await revalidateTagAction('profile');
             router.push( '/' )
         }
 

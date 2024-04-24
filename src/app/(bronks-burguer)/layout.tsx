@@ -4,7 +4,6 @@ import { Truculenta } from 'next/font/google';
 import { UserContextProvider } from "../../context/user-context";
 import { User, getProfile } from "@/src/actions/get-profile";
 import { Providers } from "@/src/providers/react-query-provider";
-import { Toaster } from "react-hot-toast";
 
 const truculenta = Truculenta( {
   weight: ['300', '500', '600', '900'],
@@ -20,6 +19,7 @@ export const metadata: Metadata = {
 export default async function RootLayout( { children, }: Readonly<{ children: React.ReactNode; }> ) {
 
   const user = await getProfile() as User;
+  console.log( user.username + '32424' )
 
   return (
 

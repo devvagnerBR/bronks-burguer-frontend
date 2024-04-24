@@ -4,17 +4,18 @@ import { BASE_URL } from "../../requests/base-url";
 import { setCookie } from "../cookies/set-cookie";
 
 export interface registerNewUserInterface {
-    username: string;
+    name: string;
+    phone: string;
     email: string;
     password: string;
 }
 
-export async function registerNewUser( { username, email, password }: registerNewUserInterface ) {
+export async function registerNewUser( { name, phone, email, password }: registerNewUserInterface ) {
 
     const response = await fetch( `${BASE_URL}/user/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
-        body: JSON.stringify( { username, email, password } ),
+        body: JSON.stringify( { name, phone, email, password } ),
         credentials: 'include'
     } )
 

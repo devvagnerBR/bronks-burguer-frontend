@@ -57,7 +57,7 @@ export default function OrderItem( { order }: { order: MappedOrdersResponse } ) 
                         <h1>{order.total}</h1>
                     </div>
 
-                    <div className="flex flex-col gap-2 pl-16 max-lg:pl-0">
+                    <div className="flex flex-col items-end gap-2 pl-16 max-lg:pl-0 ">
                         <p className="uppercase font-black max-sm:mt-4">itens</p>
                         {showMore && order.itens.map( ( item ) => {
                             return <div key={item.id} className="flex justify-between">

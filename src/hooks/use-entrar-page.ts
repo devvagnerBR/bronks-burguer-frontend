@@ -1,10 +1,11 @@
 import React from "react";
 import { z } from "zod";
-import { authMutations } from "../requests/react-query/mutations/auth";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { delay } from "../utils/delay";
+import { authenticate } from "../actions/auth/authenticate";
+import { revalidateTagAction } from "../utils/revalidate";
+
 
 const loginSchema = z.object( {
     email: z.string().email().transform( email => email.toLowerCase() ),
@@ -17,21 +18,22 @@ export function useEntrar() {
 
     const router = useRouter();
     const [error, setError] = React.useState( '' );
-    const { handleAuth } = authMutations();
 
-    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<loginData>( { resolver: zodResolver( loginSchema ) } );
+    const { register, handleSubmit, formState: { isSubmitting } } = useForm<loginData>( { resolver: zodResolver( loginSchema ) } );
 
 
-    async function handleLogin( data: loginData ) {
+    async function handleLogin( body: loginData ) {
+
 
         setError( '' )
 
-        const response = await handleAuth( data ) as { authorized: boolean, message: string };
+        const res = await authenticate( { email: body.email, password: body.password } ) as { authorized: boolean, message: string };
 
-        // await delay( 1500 );
+        if ( !res.authorized ) setError( res.message );
+        else {
+            router.push( '/' )
+        }
 
-        if ( !response.authorized ) setError( response.message );
-        else router.push( '/' )
     }
 
     return {

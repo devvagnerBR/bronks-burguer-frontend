@@ -1,6 +1,7 @@
 'use server'
 
 import { BASE_URL } from "../requests/base-url";
+import { revalidateTagAction } from "../utils/revalidate";
 import { getCookie } from "./cookies/get-cookie";
 
 export interface User {
@@ -29,6 +30,8 @@ export async function getProfile(): Promise<User | { message: string }> {
 
     const token = await getCookie( 'token' );
 
+    if ( !token ) return { message: 'Token not found' }
+
     const response = await fetch( `${BASE_URL}/user/profile`, {
         method: 'GET',
         headers: { Authorization: `Bearer ${token}` },
@@ -39,6 +42,7 @@ export async function getProfile(): Promise<User | { message: string }> {
     } )
 
     const data = await response.json() as User;
+
     return data;
 
 }

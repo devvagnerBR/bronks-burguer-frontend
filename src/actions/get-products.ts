@@ -22,7 +22,11 @@ export async function getProducts(): Promise<Product[] | { message: string }> {
 
     const response = await fetch( `${BASE_URL}/client/product/list`, {
         method: 'GET',
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
+        next: {
+            tags: ['products'],
+            revalidate: 60 * 60
+        }
     } )
 
     const data = await response.json() as Product[];

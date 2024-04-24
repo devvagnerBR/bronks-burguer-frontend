@@ -1,5 +1,5 @@
 'use client'
-import { Product, getProducts } from "@/src/actions/get-products";
+import { Product } from "@/src/actions/get-products";
 import CategoriesMenu from "./categories-menu";
 import { useSearchParams } from "next/navigation";
 import { MenuItem } from "./menu-item";
@@ -16,29 +16,21 @@ import 'swiper/css';
 import { twMerge } from "tailwind-merge";
 
 import Link from "next/link";
-import { useQuery } from "@tanstack/react-query";
 
 
 
 interface Props {
     cartIsEmpty: boolean
+    products: Product[]
 }
 
-export default function MenuItems( { cartIsEmpty }: Props ) {
+export default function MenuItems( { cartIsEmpty, products: data }: Props ) {
 
     const query = useSearchParams();
     const search = query.get( 'categoria' ) || 'lanches';
 
     const { size } = getPageWidth()
     const isMobile = size < 969
-
-    const { data } = useQuery( {
-        queryKey: ['products'],
-        queryFn: async () => await getProducts(),
-        refetchOnWindowFocus: false,
-        refetchOnMount: false,
-        staleTime: 60 * 60 // 1 hour 
-    } )
 
     const products = Array.isArray( data ) ? data.filter( ( product: Product ) => product.category === search ) : [];
 

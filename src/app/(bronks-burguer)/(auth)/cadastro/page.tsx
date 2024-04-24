@@ -16,26 +16,39 @@ export default function CadastroPage() {
     } = useCadastro();
 
     return (
-        <main className="flex flex-col bg-creme-300 w-full max-w-[460px]  max-lg:items-center max-lg:justify-center max-lg:max-w-none max-lg:pt-0  pt-16 p-4 border">
+        <main className="flex flex-col bg-creme-300 w-full max-w-[460px]  max-lg:items-center max-lg:justify-center max-lg:max-w-none max-lg:pt-0  mt-2 p-4 border">
             <div className="max-lg:flex max-lg:items-center max-lg:flex-col">
                 <h1 className="text-[80px] font-black">Criar conta</h1>
                 <h1 className="text-[39px] font-black">Bem vindo!</h1>
             </div>
             <form
                 onSubmit={handleSubmit( handleRegisterNewUser )}
-                className="mt-16  max-w-[460px] flex flex-col items-center justify-center gap-2 w-full">
+                className="mt-8  max-w-[460px] flex flex-col items-center justify-center gap-2 w-full">
                 <label
-                    htmlFor="username"
+                    htmlFor="name"
                     className="text-lg font-semibold w-full">
-                    Nome de usuário:
+                    Nome:
                     <input
                         className="h-[72px] rounded-[20px] w-full max-w-[460px] border-marrom border-[1.8px] outline-none pl-4 focus:shadow-hover text-preto font-black "
-                        required id="username"
+                        required id="name"
                         type="text"
-                        autoComplete="username"
-                        {...register( "username" )}
+                        autoComplete="name"
+                        {...register( "name" )}
                     />
-                    <p className="w-full text-end mt-1 h-4 text-red-700">{errors?.username && errors?.username.message}</p>
+                    <p className="w-full text-end mt-1 h-4 text-red-700">{errors?.name && errors?.name.message}</p>
+                </label>
+                <label
+                    htmlFor="phone"
+                    className="text-lg font-semibold w-full">
+                    Telefone (com DDD):
+                    <input
+                        className="h-[72px] rounded-[20px] w-full max-w-[460px] border-marrom border-[1.8px] outline-none pl-4 focus:shadow-hover text-preto font-black "
+                        required id="phone"
+                        type="text"
+                        autoComplete="phone"
+                        {...register( "phone" )}
+                    />
+                    <p className="w-full text-end mt-1 h-4 text-red-700">{errors?.phone && errors?.phone.message}</p>
                 </label>
                 <label
                     htmlFor="email"

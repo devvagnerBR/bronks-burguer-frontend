@@ -20,8 +20,7 @@ export default async function Header() {
             </Link>
             <div className="flex gap-9 max-sm:mt-8  items-center">
                 <Link href="/#menu" className="text-[22px] font-black cursor-pointer">CARDÁPIO</Link>
-                {user.username ?
-                    <Link href="/perfil/pedidos?p=1" className="text-[22px] font-black text-vermelho cursor-pointer uppercase">@{user.username}</Link> :
+                {user ? <Link href="/perfil/pedidos?p=1" className="text-[22px] font-black text-vermelho cursor-pointer uppercase">@{user?.username}</Link> :
                     <Link href="/entrar" className="text-[22px] font-black text-vermelho cursor-pointer">ENTRAR</Link>}
             </div>
         </div>

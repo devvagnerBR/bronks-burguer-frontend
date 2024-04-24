@@ -8,7 +8,7 @@ export async function postOrder( body: any ) {
 
     const token = await getCookie( 'token' );
 
-    await fetch( `${BASE_URL}/user/cart/order`, {
+    const res = await fetch( `${BASE_URL}/user/cart/order`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify( {
@@ -22,5 +22,8 @@ export async function postOrder( body: any ) {
         } ),
         credentials: 'include',
     } )
+
+    const data = await res.json()
+    console.log( data )
 
 }

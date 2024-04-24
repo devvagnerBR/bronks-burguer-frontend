@@ -24,6 +24,5 @@ export async function postOrder( body: any ) {
     } )
 
     const data = await res.json()
-    console.log( data )
 
 }

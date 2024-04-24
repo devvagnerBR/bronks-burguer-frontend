@@ -46,7 +46,7 @@ export function useCadastro() {
                 password: data.password
             }
         ) as { authorized: boolean, message: string };
-
+        console.log( response )
         if ( !response.authorized ) setError( response.message );
         else router.push( '/' )
 

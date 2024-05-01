@@ -1,4 +1,5 @@
 'use client'
+
 import { Product } from "@/src/actions/get-products";
 import CategoriesMenu from "./categories-menu";
 import { useSearchParams } from "next/navigation";

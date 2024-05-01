@@ -3,6 +3,7 @@ import { Product, getProducts } from "@/src/actions/get-products";
 import BannerHomepage from "@/src/components/homepage/banner";
 import HomepageHero from "@/src/components/homepage/hero";
 import MenuItems from "@/src/components/homepage/menu-items";
+import { Suspense } from "react";
 
 
 export default async function Home() {
@@ -16,7 +17,12 @@ export default async function Home() {
     <div className="mt-16  mb-20">
       <HomepageHero />
       <BannerHomepage />
-      <MenuItems products={products} cartIsEmpty={cartIsEmpty} />
+
+      <Suspense>
+        <MenuItems
+          products={products}
+          cartIsEmpty={cartIsEmpty} />
+      </Suspense>
     </div>
 
   );
